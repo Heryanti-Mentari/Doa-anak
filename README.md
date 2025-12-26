@@ -1,4 +1,6 @@
-\# Website Doa dan Kuis Islami Anak Berbasis Kecerdasan Buatan
+\# Website Doa dan Kuis Islami Anak  
+
+\*\*Berbasis Kecerdasan Buatan\*\*
 
 
 
@@ -12,27 +14,35 @@ meningkatkan interaksi pengguna.
 
 
 
-\## Identitas Kelompok
+---
 
-\*\*Nama Kelompok\*\* : Kelompok   
+
+
+\## 👥 Identitas Kelompok
+
+\*\*Nama Kelompok\*\* : Kelompok 7  
 
 \*\*Mata Kuliah\*\*   : Kecerdasan Buatan  
 
-\*\*Dosen Pengampu\*\*: Vera Wati, M.Kom
+\*\*Dosen Pengampu\*\*: Vera Wati, M.Kom  
 
 
 
-\### Anggota Kelompok
+\### 👤 Anggota Kelompok
 
-1\. Amira Rodianti	 – 2307058
+1\. Amira Rodianti – 2307058  
 
-2\. Asri Dwi Aryanti 	 – 2307060
+2\. Asri Dwi Aryanti – 2307060  
 
-3\. Heryanti Rima Mentari – 2307068
+3\. Heryanti Rima Mentari – 2307068  
 
 
 
-\## Tujuan
+---
+
+
+
+\## 🎯 Tujuan
 
 \- Menyediakan media pembelajaran Islami yang interaktif untuk anak-anak  
 
@@ -42,47 +52,67 @@ meningkatkan interaksi pengguna.
 
 
 
-\## Konsep Kecerdasan Buatan
+---
+
+
+
+\## 🧠 Konsep Kecerdasan Buatan
 
 Website ini menerapkan konsep kecerdasan buatan sederhana berupa:
 
-\- Pemilihan soal kuis secara dinamis
+\- Pemilihan soal kuis secara dinamis  
 
-\- Evaluasi jawaban pengguna secara otomatis
+\- Evaluasi jawaban pengguna secara otomatis  
 
-\- Pemberian umpan balik (feedback) berdasarkan jawaban pengguna
-
-
-
-\## Teknologi yang Digunakan
-
-\- HTML
-
-\- CSS
-
-\- JavaScript
+\- Pemberian umpan balik (feedback) berdasarkan jawaban pengguna  
 
 
 
-\## Fitur Utama
-
-\- Kumpulan doa harian anak
-
-\- Kuis Islami interaktif
-
-\- Audio bacaan doa
-
-\- Antarmuka ramah anak
+---
 
 
 
-\## Demo Website
+\## 🛠️ Teknologi yang Digunakan
+
+\- HTML  
+
+\- CSS  
+
+\- JavaScript  
+
+
+
+---
+
+
+
+\## ⭐ Fitur Utama
+
+\- Kumpulan doa harian anak  
+
+\- Kuis Islami interaktif  
+
+\- Audio bacaan doa  
+
+\- Antarmuka ramah anak  
+
+
+
+---
+
+
+
+\## 🌐 Demo Website
 
 https://heryanti-mentari.github.io/Doa-anak/
 
 
 
-\## Catatan
+---
+
+
+
+\## 📝 Catatan
 
 Proyek ini dibuat sebagai Tugas Besar mata kuliah Kecerdasan Buatan
 
