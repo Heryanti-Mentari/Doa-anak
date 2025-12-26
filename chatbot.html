@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Teman Anak — Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* tambahan cepat untuk elemen badge / panel */
+      .chat-top {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .profile {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .badge {
+        background: linear-gradient(90deg, #ffd966, #ff9f1c);
+        color: #222;
+        padding: 6px 10px;
+        border-radius: 18px;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .points {
+        background: #fff;
+        padding: 6px 10px;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        font-weight: 600;
+      }
+      .modes {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .mode-btn {
+        padding: 8px 12px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+
+        background: #4da8ff; /* biru solid */
+        color: #ffffff;
+        font-weight: 600;
+
+        box-shadow: 0 4px 10px rgba(77, 168, 255, 0.35);
+        transition: all 0.15s ease;
+      }
+
+      .mode-btn:hover {
+        background: #3b92e6;
+      }
+
+      .mode-btn.active {
+        background: #1e7fd6; /* biru lebih gelap */
+        box-shadow: 0 6px 14px rgba(30, 127, 214, 0.45);
+        transform: translateY(-2px);
+      }
+      .small-panel {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .side-controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .count-bubble {
+        background: #fff;
+        padding: 6px 8px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+      }
+      .chatArea {
+        min-height: 260px;
+        max-height: 360px;
+        overflow-y: auto;
+        padding: 12px;
+
+        background: rgba(255, 255, 255, 0.65); /* transparan halus */
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px); /* efek kaca */
+
+        border-radius: 12px;
+        border: 1px solid rgba(240, 230, 214, 0.8);
+      }
+      .chat-user {
+        background: #d1e7ff; /* tetap solid */
+      }
+      .chat-row {
+        display: flex;
+        margin-bottom: 1px;
+      }
+
+      .chat-row.user {
+        justify-content: flex-end;
+      }
+
+      .chat-row.bot {
+        justify-content: flex-start;
+      }
+      .chat-user {
+        background: #d1e7ff;
+        color: #003366;
+        border-radius: 14px;
+        border-bottom-right-radius: 4px;
+        margin-right: 6px;
+        padding: 10px 12px;
+        max-width: 75%;
+      }
+
+      .chat-bot {
+        background: #e9f5ee; 
+        color: #333;
+        border-radius: 14px;
+        border-bottom-left-radius: 4px;
+        margin-left: 6px;
+        padding: 10px 12px;
+        max-width: 75%;
+        animation: fadeUp 0.2s ease;
+      }
+
+      /* ===== INPUT ===== */
+      .input-row {
+        display: flex;
+        gap: 8px;
+      }
+
+      input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        background: #4da8ff;
+        color: white;
+        font-weight: bold;
+      }
+      .doa-card {
+        background: #f7f9fc;
+        border-left: 4px solid #4caf50;
+        padding: 12px;
+        border-radius: 10px;
+        max-width: 85%;
+      }
+
+      .doa-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .doa-mic {
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      .doa-mic.pulse {
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 0.6;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .doa-arab {
+        text-align: right;
+        font-size: 20px;
+        margin-top: 8px;
+      }
+
+      .doa-latin {
+        font-style: italic;
+        margin-top: 6px;
+      }
+
+      .doa-arti {
+        margin-top: 6px;
+      }
+
+      button:hover {
+        background: #3b92e6;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+      <section class="chatbox">
+        <div class="chat-top">
+          <div class="profile">
+            <div class="badge" id="badgeLabel">Pemula</div>
+            <div class="points" id="pointsLabel">Poin: 0</div>
+          </div>
+          <div class="side-controls">
+            <button id="resetProgress" class="small-btn" title="Reset progress">Reset</button>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: 6px">🤖 Dona — Teman Anak</h3>
+
+        <div id="chatArea" class="chatArea" aria-live="polite"></div>
+
+        <div style="display: flex; gap: 8px; margin-top: 10px">
+          <input id="chatInput" type="text" placeholder="Tanya: 'ceritain dongeng', 'doa tidur', 'mulai belajar doa'..." style="flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #ccc" />
+          <button id="chatMic" class="small-btn">🎙️</button>
+          <button id="chatSend" class="small-btn">Kirim</button>
+        </div>
+
+        <div class="modes" role="toolbar" aria-label="Mode controls">
+          <button class="mode-btn" data-mode="normal" id="modeNormal">Normal</button>
+          <button class="mode-btn" data-mode="learn" id="modeLearn">Belajar Doa</button>
+          <button class="mode-btn" data-mode="quiz" id="modeQuiz">Kuis</button>
+          <button class="mode-btn" data-mode="story" id="modeStory">Cerita Interaktif</button>
+          <button class="mode-btn" data-mode="tebak" id="modeTebak">Tebak-tebakan</button>
+          <button class="mode-btn" data-mode="dzikir" id="modeDzikir">Dzikir</button>
+          <button class="mode-btn" data-mode="sleep" id="modeSleep">Temani Tidur</button>
+        </div>
+
+        <div id="modeArea" class="mode-area tiny" aria-live="polite">Mode: <strong id="modeName">Normal</strong> — <span id="modeHelp">Bot siap menjadi temanmu 😊</span></div>
+      </section>
+    </main>
+
+    <footer class="footer-note">
+      <small>Chatbot aman untuk anak • semua data lokal • tanpa backend</small>
+    </footer>
+
+    <script src="chatbot.js"></script>
+  </body>
+</html>

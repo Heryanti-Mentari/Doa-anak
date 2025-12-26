@@ -1,0 +1,605 @@
+/* --------------------------------------------------- 
+   VARIABLE WARNA
+--------------------------------------------------- */
+:root {
+  --bg-1: #f9fcff;
+  --bg-2: #e8f3ff;
+  --accent: #4da8ff;
+  --accent-2: #76c7ff;
+  --card: #ffffff;
+  --muted: #6b6b6b;
+
+  --yellow: #ffe28a;
+  --green: #b8f7c2;
+  --blue: #aee1ff;
+}
+
+/* ---------------------------------------------------
+   RESET
+--------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comic Neue', 'Poppins', sans-serif;
+  background: url('assets/img/background_chatbot.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #222;
+}
+
+/* ---------------------------------------------------
+   HEADER
+--------------------------------------------------- */
+header {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  padding: 14px 18px;
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 980px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 85px;
+  border-radius: 12px;
+}
+
+/* ---------------------------------------------------
+   MENU BOX
+--------------------------------------------------- */
+.menu-box {
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(6px); /* Safari 9+, iOS 9+ */
+  backdrop-filter: blur(6px); /* Browser modern */
+  padding: 8px 12px;
+  border-radius: 14px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.small-btn {
+  padding: 6px 10px;
+  font-size: 14px;
+  background: white;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: 0.2s;
+}
+
+.small-btn:hover {
+  background: #eef6ff;
+}
+
+/* ---------------------------------------------------
+   CONTAINER
+--------------------------------------------------- */
+.container {
+  max-width: 900px;
+  margin: 16px auto;
+  padding: 0 16px 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ---------------------------------------------------
+   MASCOT
+--------------------------------------------------- */
+.mascot-large {
+  display: block;
+  margin: 12px auto;
+  width: 120px;
+  animation: floaty 4s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
+.btn,
+.big-btn {
+  background: var(--accent-2);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s;
+  width: 100%;
+}
+
+.big-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.btn:hover,
+.big-btn:hover {
+  transform: translateY(-3px);
+  background: var(--accent);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.flex {
+  display: flex;
+}
+.flex-gap {
+  gap: 5px;
+}
+.flex-1 {
+  flex: 1;
+}
+
+/* ---------------------------------------------------
+   LIST DOA
+--------------------------------------------------- */
+.list {
+  margin-top: 12px;
+}
+
+.doa-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid #e7e7e7;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  transition: 0.2s;
+  animation: cardIn 0.28s ease;
+}
+
+.doa-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------
+   CHATBOX
+--------------------------------------------------- */
+.chatbox {
+  margin-top: 18px;
+  padding: 12px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.chat-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.profile {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.badge {
+  background: linear-gradient(90deg, #ffd966, #ff9f1c);
+  color: #222;
+  padding: 6px 10px;
+  border-radius: 18px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.points {
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  font-weight: 600;
+}
+
+.side-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.count-bubble {
+  background: #fff;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.chatArea {
+  max-height: 360px;
+  overflow: auto;
+  padding: 8px;
+  background: #fffced;
+  border-radius: 12px;
+  border: 1px solid #f0e6d6;
+}
+
+.chat-user {
+  text-align: right;
+  background: #d1e7ff;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 8px 0;
+  display: inline-block;
+}
+
+.chat-bot {
+  text-align: left;
+  background: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 8px 0;
+  display: inline-block;
+}
+
+.mode-btn {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #e6f2ff;
+}
+
+.mode-btn.active {
+  background: #bfe0ff;
+  transform: translateY(-2px);
+}
+
+.modes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.mode-area {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f8fbff;
+  border: 1px dashed #e0f0ff;
+}
+
+.tiny {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ---------------------------------------------------
+   MENU GRID
+--------------------------------------------------- */
+.menu-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  padding: 10px;
+  background: #ffffffd3;
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card .logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------
+   REKOMENDASI DOA
+--------------------------------------------------- */
+.rekomendasi {
+  margin-top: 25px;
+}
+
+.rekomendasi-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+  background: #ffffffd3;
+  border-radius: 15px;
+}
+
+.rekomendasi-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.doa-label {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #4da8ff;
+}
+
+.arabic {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-family: 'Amiri', serif;
+}
+
+/* ---------------------------------------------------
+   QUIZ PAGE
+--------------------------------------------------- */
+.quiz-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  margin-top: 20px;
+}
+
+#answerBox {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.voice-btn {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #4da8ff;
+  color: white;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.voice-btn:hover {
+  background-color: #76c7ff;
+}
+
+#resultArea {
+  margin-top: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.bubble-user {
+  background-color: #e0f7fa;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.bubble-bot {
+  background-color: #fff3e0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+/* ---------------------------------------------------
+   HERO / ABOUT
+--------------------------------------------------- */
+.welcome-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #3b7cff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.intro,
+.about p {
+  padding: 15px 20px;
+  border-radius: 12px;
+  line-height: 1.6;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.intro {
+  background: #f3f7ff;
+}
+.about p {
+  background: #fdf6ff;
+}
+
+/* ---------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------- */
+@media (max-width: 600px) {
+  .quiz-box {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    width: 70px;
+  }
+  .mascot-large {
+    width: 90px;
+  }
+  .container {
+    padding: 0 12px 30px;
+  }
+  .welcome-title {
+    font-size: 26px;
+  }
+  .arabic {
+    font-size: 1.5rem;
+  }
+}
+
+/* =====================
+   QUIZ
+===================== */
+
+.quiz-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  margin-top: 20px;
+}
+
+.quiz-question {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.answer-wrap {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#answerBox {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.voice-btn {
+  padding: 10px;
+  border-radius: 10px;
+  background: #4da8ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.voice-btn:hover {
+  background: #76c7ff;
+}
+
+.btn-check {
+  width: 100%;
+  margin-top: 14px;
+}
+
+#resultArea {
+  margin-top: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.bubble-user {
+  background: #e0f7fa;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+.bubble-bot {
+  background: #fff3e0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+.chat-title {
+  margin-bottom: 6px;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* STAR PROGRESS */
+.star-progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.star {
+  opacity: 0.3;
+}
+
+.star.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* CONFETTI */
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}

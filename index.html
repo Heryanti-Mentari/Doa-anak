@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doa Anak • Beranda</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* ===================== */
+      /*      TAMBAHAN CSS     */
+      /* ===================== */
+
+      .text-center {
+        text-align: center;
+      }
+
+      .section-spacing {
+        margin-top: 25px;
+      }
+
+      .card-center {
+        margin: 0 auto;
+        max-width: 500px;
+        padding: 20px;
+        background: #ffffffd3;
+        border-radius: 15px;
+      }
+
+      .rekomendasi-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .rekomendasi-card.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .big-btn {
+        cursor: pointer;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        background-color: #4da8ff;
+        color: white;
+        transition: background-color 0.3s ease;
+        flex: 1;
+      }
+
+      .big-btn:hover {
+        background-color: #76c7ff;
+      }
+
+      .btn-row {
+        display: flex;
+        gap: 5px;
+      }
+
+      .menu-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .menu-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 120px;
+        padding: 10px;
+        background: #ffffffd3;
+        border-radius: 15px;
+        text-decoration: none;
+        color: black;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .menu-card .logo {
+        width: 60px;
+        margin-bottom: 10px;
+      }
+
+      .mascot-large {
+        display: block;
+        margin: 20px auto;
+        max-width: 150px;
+      }
+
+      .doa-label {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #4da8ff;
+      }
+
+      .arabic {
+        font-family: 'Amiri', serif;
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .latin {
+        font-style: italic;
+        margin-bottom: 5px;
+      }
+
+      .arti {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <div class="logo-wrap">
+          <img class="logo" src="assets/img/logo_doa_anak_atas.png" alt="Logo Doa Anak" />
+        </div>
+
+        <div class="title-wrap">
+          <h1>DOA ANAK</h1>
+        </div>
+
+        <nav class="header-controls menu-box">
+          <a class="small-btn" href="index.html">Beranda</a>
+          <a class="small-btn" href="chatbot.html">Chatbot</a>
+          <a class="small-btn" href="cari.html">Cari Doa</a>
+          <a class="small-btn" href="kuis.html">Kuis</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MASCOT -->
+
+
+    <!-- MAIN -->
+    <main class="container text-center">
+      <!-- HERO -->
+      <section class="hero">
+        <h2 class="welcome-title">Selamat Datang di Doa Anak Interaktif</h2>
+        <p class="intro">Halo teman kecil yang hebat! Di sini kamu bisa belajar doa-doa harian dengan cara yang mudah, menyenangkan, dan cocok untuk anak-anak.</p>
+      </section>
+
+      <!-- DESKRIPSI -->
+      <section class="about">
+        <p>Kamu bisa mencari doa sesuai kebutuhan, belajar dengan chatbot temanmu, atau mencoba kuis untuk menguji pengetahuan. Ayo belajar sambil bermain!</p>
+      </section>
+
+      <!-- REKOMENDASI -->
+      <section class="rekomendasi section-spacing">
+        <h3>Rekomendasi Doa Hari Ini</h3>
+        <div id="doaCard" class="rekomendasi-card card-center"></div>
+      </section>
+
+      <!-- MENU -->
+      <div class="menu-grid">
+        <a href="cari.html" class="menu-card">
+          <img class="logo" src="assets/img/Logo_search_ijo.png" alt="Cari Doa" />
+          <div class="menu-text">Cari Doa</div>
+        </a>
+
+        <a href="chatbot.html" class="menu-card">
+          <img class="logo" src="assets/img/chatbot-removebg-preview.png" alt="Chatbot" />
+          <div class="menu-text">Chatbot</div>
+        </a>
+
+        <a href="kuis.html" class="menu-card">
+          <img class="logo" src="assets/img/Logo_play.png" alt="Kuis" />
+          <div class="menu-text">Mulai Kuis</div>
+        </a>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-note">
+      <small>© 2025 Doa Anak • dibuat untuk belajar • demo tanpa backend</small>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      const doaList = {
+        pagi: {
+          label: 'Doa Pagi',
+          judul: 'Doa Bangun Tidur',
+          arab: 'اَلْحَمْدُ ِللّٰهِ الَّذِيْ أَحْيَانَا بَعْدَمَا أَمَاتَنَا وَإِلَيْهِ النُّشُوْرُ',
+          latin: 'Alḫamdulillâhil ladzî aḫyânâ ba‘da mâ amâtanâ wa ilaihin nusyûr(u)',
+          arti: 'Segala puji bagi Allah yang menghidupkanku kembali setelah mematikanku dan hanya kepada-Nya akan bangkit.',
+          audio: 'assets/sounds/doa_bangun_tidur.mp3',
+        },
+        sebelumMakan: {
+          label: 'Doa Sebelum Makan',
+          judul: 'Doa Sebelum Makan',
+          arab: 'بِسْمِ اللَّهِ اَللّٰهُمَّ بَارِكْ لَنَا فِيْمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ',
+          latin: 'Allâhumma bârik lanâ fîmâ razaqtanâ waqinâ ‘adzâban nâr(i)',
+          arti: 'Ya Allah, berkahilah apa yang telah Engkau anugerahkan kepada kami dan jagalah kami dari siksa neraka.',
+          audio: 'assets/sounds/doa_sebelum_makan.mp3',
+        },
+        sesudahMakan: {
+          label: 'Doa Sesudah Makan',
+          judul: 'Doa Sesudah Makan',
+          arab: 'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مِنَ الْمُسْلِمِينَ',
+          latin: 'Alhamdulillahil ladzi ath‘amanaa wa saqaanaa wa ja‘alanaa minal muslimin',
+          arti: 'Segala puji bagi Allah yang telah memberi kami makan dan minum serta menjadikan kami sebagai orang Islam.',
+          audio: 'assets/sounds/doa_sesudah_makan.mp3',
+        },
+        malam: {
+          label: 'Doa Malam',
+          judul: 'Doa Sebelum Tidur',
+          arab: ' اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَ"اَللّٰهُمَّ بِسْمِكَ أَحْيَا وَبِسْمِكَ أَمُوْتُا',
+          latin: 'Allâhumma bismika aḫyâ wa bismika amût(u)',
+          arti: 'Ya Allah, dengan Nama-Mu, aku hidup dan dengan nama-Mu pula aku mati.',
+          audio: 'assets/sounds/doa_sebelum_tidur.mp3',
+        },
+      };
+
+      function getDoaByTime() {
+        const h = new Date().getHours();
+        if (h >= 4 && h < 11) return doaList.pagi;
+        if ((h >= 11 && h < 13) || (h >= 17 && h < 19)) return doaList.sebelumMakan;
+        if ((h >= 13 && h < 14) || (h >= 19 && h < 20)) return doaList.sesudahMakan;
+        return doaList.malam;
+      }
+
+      const currentDoa = getDoaByTime();
+      const doaCard = document.getElementById('doaCard');
+
+      doaCard.innerHTML = `
+        <div class="doa-label">${currentDoa.label}</div>
+        <h4>${currentDoa.judul}</h4>
+        <p class="arabic">${currentDoa.arab}</p>
+<p class="latin">${currentDoa.latin}</p>
+
+        <p class="arti">"${currentDoa.arti}"</p>
+
+        <div class="btn-row">
+  <button id="playDoa" class="big-btn">🔊 Dengarkan Doa</button>
+  <button id="playArti" class="big-btn">🔊 Dengarkan Arti</button>
+</div>
+
+      `;
+
+      setTimeout(() => doaCard.classList.add('show'), 100);
+
+      function playArtiTTS(teks) {
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(teks);
+        u.lang = 'id-ID';
+        speechSynthesis.speak(u);
+      }
+
+      playDoa.onclick = () => {
+        playArabAudio(currentDoa.audio, playDoa);
+      };
+
+      playArti.onclick = () => {
+        playArtiTTS(currentDoa.arti);
+      };
+
+      // ==========================
+      // AUDIO DOA ARAB (MP3)
+      // ==========================
+      const doaAudio = new Audio();
+      let isPlaying = false;
+      let currentSrc = null;
+
+      function playArabAudio(src, btn) {
+        if (!src) return;
+
+        // toggle play / pause
+        if (currentSrc === src) {
+          if (isPlaying) {
+            doaAudio.pause();
+            btn.textContent = '🔊 Arab';
+            isPlaying = false;
+          } else {
+            doaAudio.play();
+            btn.textContent = '⏸ Pause';
+            isPlaying = true;
+          }
+          return;
+        }
+
+        // audio baru
+        doaAudio.pause();
+        doaAudio.currentTime = 0;
+        doaAudio.src = src;
+        doaAudio.play();
+
+        currentSrc = src;
+        isPlaying = true;
+        btn.textContent = '⏸ Pause';
+
+        doaAudio.onended = () => {
+          isPlaying = false;
+          btn.textContent = '🔊 Doa';
+        };
+      }
+    </script>
+  </body>
+</html>
