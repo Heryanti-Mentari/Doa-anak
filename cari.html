@@ -55,6 +55,22 @@
       .controls select {
         background-color: #fff;
       }
+
+      @media (max-width: 600px) {
+        .btn-row {
+          display: flex;
+          flex-direction: row; /* PAKSA KE SAMPING */
+          flex-wrap: nowrap; /* jangan turun */
+          width: 100%;
+        }
+
+        .btn-row button {
+          flex: 1; /* bagi rata */
+          font-size: 13px;
+          padding: 8px 6px;
+          white-space: nowrap; /* teks gak turun */
+        }
+      }
     </style>
   </head>
   <body>
