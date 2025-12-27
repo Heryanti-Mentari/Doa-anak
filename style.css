@@ -603,3 +603,22 @@ header {
   pointer-events: none;
   z-index: 999;
 }
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-wrap .logo {
+  height: 90px; /* naikkan sedikit */
+  width: auto; /* jaga rasio */
+  flex-shrink: 0; /* jangan mengecil saat sempit */
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1; /* ini PENTING */
+  font-weight: bold;
+}

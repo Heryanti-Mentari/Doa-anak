@@ -531,15 +531,26 @@ function advanceDzikir() {
 /* --------------------------
    Sleep mode (temani tidur)
    -------------------------- */
-function startSleepMode() {
-  botSay('Baik, aku temani tidur ya. Aku bacakan doa tidur dan suara lembut.');
-  speak('Tenang ya, pejamkan mata. Aku bacakan doa tidur dan lagu pengantar tidur yang lembut.');
-  // read doa
-  const d = doaData.find((d) => norm(d.nama) === norm('doa sebelum tidur'));
+   function startSleepMode(type = 'default') {
+  if (type === 'default') {
+    botSay('Baik, aku temani tidur ya. Aku bacakan doa tidur dan suara lembut.');
+    const d = doaData.find((d) => norm(d.nama) === norm('doa sebelum tidur'));
 
   if (d) speak(`${d.arab}. ${d.latin}. Artinya: ${d.arti}`);
   // soft lullaby via TTS
   setTimeout(() => speak('Selamat malam. Semoga mimpi indah. Aku akan tetap di sini jika kamu perlu.'), 2500);
+  }
+
+  if (type === 'calming') {
+    botSay('Tenang ya, kamu aman. Aku di sini menemani 🤍');
+    speak('Tarik napas pelan-pelan...');
+  }
+
+  if (type === 'doa-only') {
+    const d = doaData.find(d => norm(d.nama) === norm('doa sebelum tidur'));
+    if (d) speak(`${d.arab}. ${d.latin}. Artinya: ${d.arti}`);
+  }
+
   addPoints(5, 'temani tidur');
 }
 
@@ -605,6 +616,22 @@ function processMessage(raw) {
   }
   const fixed = fixTypos(raw);
   const text = norm(fixed);
+// PRIORITAS KHUSUS MODE BELAJAR
+const sleepVariants = [
+  {
+    keywords: ['temani tidur'],
+    type: 'default'
+  },
+  {
+    keywords: ['aku takut', 'temani aku', 'takut gelap'],
+    type: 'calming'
+  },
+  {
+    keywords: ['bacain doa tidur', 'doa tidur dong'],
+    type: 'doa-only'
+  }
+];
+
 
 const mood = detectMood(raw);
 
@@ -614,8 +641,7 @@ const hasIntent =
   fuzzyContains(text, 'kuis') ||
   fuzzyContains(text, 'dzikir') ||
   fuzzyContains(text, 'cerita') ||
-  fuzzyContains(text, 'tebak') ||
-  fuzzyContains(text, 'tidur');
+  fuzzyContains(text, 'tebak') 
 
 if (!hasIntent) {
   if (mood === '😢') {
@@ -770,14 +796,19 @@ if (
     return;
   }
 
-  if (fuzzyContains(text, 'temani tidur') || fuzzyContains(text, 'tidur')) {
-    MODE = 'sleep';
-    document.querySelectorAll('.mode-btn').forEach((b) => b.classList.remove('active'));
-    document.getElementById('modeSleep').classList.add('active');
-    modeName.textContent = 'Temani Tidur';
-    startSleepMode();
-    return;
+for (const v of sleepVariants) {
+  for (const kw of v.keywords) {
+    if (fuzzyContains(text, kw)) {
+      MODE = 'sleep';
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('modeSleep').classList.add('active');
+      modeName.textContent = 'Temani Tidur';
+      startSleepMode(v.type); // 👈 kirim varian
+      return;
+    }
   }
+}
+
     if (fuzzyContains(text, 'mulai belajar') || fuzzyContains(text, 'belajar doa')) {
     // try to find which doa
     for (const d of doaData) {
@@ -813,10 +844,8 @@ if (matchedDoa) {
   addPoints(5, 'minta doa');
   return; // stop di sini, jangan lanjut ke sleep mode
 }
-if (fuzzyContains(text, 'temani tidur') || fuzzyContains(text, 'tidur')) {
-  startSleepMode();
-  return;
-}
+
+
 
   // knowledge Q/A
   const knowledgeAns = askKnowledge(text);
