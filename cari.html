@@ -18,6 +18,13 @@
         margin-bottom: 16px;
         align-items: center;
       }
+      .controls input,
+      .controls select {
+        flex: 1 1 220px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
       .btn-row {
         display: flex;
         gap: 8px;
@@ -44,18 +51,14 @@
         flex-wrap: wrap;
       }
       @media (max-width: 600px) {
-        .controls input,
-        .controls select {
-          flex: 1 1 auto;
-          width: 100%;
-          max-width: 100%;
+        .controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn-row {
+          flex-direction: row;
         }
       }
-      .controls input,
-      .controls select {
-        background-color: #fff;
-      }
-      
     </style>
   </head>
   <body>
