@@ -59,6 +59,14 @@
           flex-direction: row;
         }
       }
+      @media (max-width: 600px) {
+        .controls input,
+        .controls select {
+          flex: 1 1 auto;
+          width: 100%;
+          max-width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -105,7 +113,7 @@
           const header = doc.querySelector('header');
           if (header) document.getElementById('header-placeholder').appendChild(header.cloneNode(true));
         } catch (e) {
-          /* ignore if offline */
+          /* i gnore if offline */
         }
       })();
     </script>
