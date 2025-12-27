@@ -742,3 +742,48 @@ header {
     font-size: 14px;
   }
 }
+
+/* ==================================================
+   RESPONSIVE KHUSUS HALAMAN KUIS
+================================================== */
+
+@media (max-width: 768px) {
+  .quiz-question {
+    font-size: 1rem;
+  }
+
+  .arab-text {
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .answer-wrap {
+    flex-direction: column;
+  }
+
+  #answerBox {
+    min-height: 90px;
+    font-size: 14px;
+  }
+
+  .voice-btn {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .btn-check {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .arab-text {
+    font-size: 18px;
+  }
+
+  .quiz-box {
+    padding: 14px;
+  }
+}
