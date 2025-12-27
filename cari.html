@@ -18,13 +18,6 @@
         margin-bottom: 16px;
         align-items: center;
       }
-      .controls input,
-      .controls select {
-        flex: 1 1 220px;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid #ddd;
-      }
       .btn-row {
         display: flex;
         gap: 8px;
@@ -51,30 +44,16 @@
         flex-wrap: wrap;
       }
       @media (max-width: 600px) {
-        .controls {
-          flex-direction: column;
-          align-items: stretch;
+        .controls input,
+        .controls select {
+          flex: 1 1 auto;
+          width: 100%;
+          max-width: 100%;
         }
-        .btn-row {
-          flex-direction: row;
-        }
-        /* Tablet & HP */
-        @media (max-width: 768px) {
-          .controls input,
-          .controls select {
-            font-size: 14px; /* kecilin teks */
-            padding: 8px 10px; /* kecilin kotak */
-          }
-        }
-
-        /* HP kecil */
-        @media (max-width: 480px) {
-          .controls input,
-          .controls select {
-            font-size: 13px;
-            padding: 7px 9px;
-          }
-        }
+      }
+      .controls input,
+      .controls select {
+        background-color: #fff;
       }
     </style>
   </head>
