@@ -623,7 +623,7 @@ header {
 }
 
 /* ==================================================
-   RESPONSIVE GLOBAL – TAMBAHAN SAJA (AMAN)
+   RESPONSIVE GLOBAL
 ================================================== */
 
 /* TABLET & HP */
@@ -785,56 +785,5 @@ header {
 
   .quiz-box {
     padding: 14px;
-  }
-}
-
-/* ================================
-   RESPONSIVE – HALAMAN CARI DOA
-================================ */
-
-/* Tablet & HP */
-@media (max-width: 768px) {
-  .controls {
-    gap: 8px;
-  }
-
-  .controls input,
-  .controls select {
-    flex: 1 1 auto;
-    font-size: 14px;
-    padding: 8px 10px;
-  }
-
-  .btn-row {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .btn-row button {
-    font-size: 13px;
-    padding: 8px 10px;
-    white-space: nowrap;
-  }
-}
-
-/* HP kecil */
-@media (max-width: 480px) {
-  .controls {
-    flex-direction: column;
-  }
-
-  .controls input,
-  .controls select {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .btn-row {
-    flex-wrap: wrap;
-  }
-
-  .btn-row button {
-    flex: 1 1 48%;
-    text-align: center;
   }
 }
